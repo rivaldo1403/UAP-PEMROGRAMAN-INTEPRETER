@@ -48,3 +48,54 @@ class superGunungApi:
         """.format(i["nama"],i["bentuk"],i["tinggi_meter"],i["estimasi_letusan_terakhir"],i["geolokasi"]))
         print("File berhasil di print!")
         jeda = input()
+        
+        elif jeda == 'n':
+        print()
+        print("Anda telah memilih untuk tidak mengeprint data")
+      else:
+        print()
+        print("Input yang anda masukan salah!")
+        pilihan()
+    #-----------------------------------------------------------------#
+    for i in self.gunungSukses:
+      if i["nama"] == namaGunung.title():
+        kondisi = True
+        print("""
+        Nama Gunung               : {0}
+        Bentuk Gunung             : {1}
+        Tinggi Gunung             : {2}
+        Estimasi Letusan Terakhir : {3}
+        Geolokasi                 : {4}
+        """.format(i["nama"],i["bentuk"],i["tinggi_meter"],i["estimasi_letusan_terakhir"],i["geolokasi"]))
+        pilihan()
+    if kondisi == False:
+      print()
+      print("Data tidak ditemukan!")
+      gung.search()
+    #-----------------------------------------------------------------#
+    pilihan2()
+    Menu.menu()
+
+#subclass dari class superGunungApi
+class subGunungApi(superGunungApi):
+  #konstruktor
+  def _init_(self,pilih):
+    self.pilih = pilih
+  #menu 3, memfilter data
+  def filter(self): 
+    #memfilter bedasarkan bentuk
+    if self.pilih == 1:
+      #-----------------------------------------------------------------# 
+      def pilihan():
+        jeda = input("Apakah anda ingin kembali ke menu utama? (y/n)")
+        if jeda == 'y':
+          Menu.menu()
+        elif jeda == 'n':
+          geng = subGunungApi(1)
+          geng.filter()
+        else:
+          print("Invalid Input")
+          jeda = input("Tekan \"Enter\" untuk melanjutkan")
+          pilihan()
+      #-----------------------------------------------------------------#
+      kondisi = False
