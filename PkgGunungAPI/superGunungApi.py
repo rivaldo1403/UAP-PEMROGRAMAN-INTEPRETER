@@ -48,8 +48,7 @@ class superGunungApi:
         """.format(i["nama"],i["bentuk"],i["tinggi_meter"],i["estimasi_letusan_terakhir"],i["geolokasi"]))
         print("File berhasil di print!")
         jeda = input()
-        
-        elif jeda == 'n':
+      elif jeda == 'n':
         print()
         print("Anda telah memilih untuk tidak mengeprint data")
       else:
