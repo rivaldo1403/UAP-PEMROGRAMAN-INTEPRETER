@@ -98,3 +98,57 @@ class subGunungApi(superGunungApi):
           pilihan()
       #-----------------------------------------------------------------#
       kondisi = False
+      inp = input("Masukan bentuk : ")
+      nomor = 0
+      for i in self.gunungSukses:
+        if i["bentuk"] == inp.lower() or i["bentuk"] == inp.title():
+          nomor = nomor + 1
+          kondisi = True
+          print("""
+          {0}. {1}""".format(nomor,i["nama"]))
+      if kondisi == False:
+        print("Invalid Input")
+        geng = subGunungApi(1)
+        geng.filter()
+      pilihan()
+      #-----------------------------------------------------------------#
+    #memfilter bedasarkan tinggi
+    elif self.pilih == 2:
+      #-----------------------------------------------------------------#
+      def pilihan():
+        jeda = input("Apakah anda ingin kembali ke menu utama? (y/n)")
+        if jeda == 'y':
+          Menu.menu()
+        elif jeda == 'n':
+          geng = subGunungApi(2)
+          geng.filter()
+        else:
+          print("Invalid Input")
+          jeda = input("Tekan \"Enter\" untuk melanjutkan")
+          pilihan()
+      #-----------------------------------------------------------------#
+      kondisi = False
+      inp = eval(input("Masukan tinggi : "))
+      tinggiGunung = []
+      nomor = 0
+      #-----------------------------------------------------------------#
+      for i in self.gunungSukses:
+        tinggiGunung = i["tinggi_meter"]
+        if tinggiGunung == "N/A":
+          tinggiGunung = int(tinggiGunung.replace("N/A","0"))
+        else:
+          tinggiGunung = tinggiGunung.replace("−","-")
+          tinggiGunung = int(tinggiGunung.replace("meter",""))
+        if tinggiGunung > inp:
+          kondisi = True
+          nomor = nomor + 1
+          print("""
+          {0}. Gunung {1} 
+          dengan tinggi {2}""".format(nomor,i["nama"],i["tinggi_meter"]))
+      if kondisi == False:
+        print("Data yang anda cari tidak ada")
+      pilihan()
+    else:
+      print("Invalid Input")
+    jeda = input("Tekan \"Enter\" untuk melanjutkan")
+    Menu.menu()
