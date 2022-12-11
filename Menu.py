@@ -12,3 +12,19 @@ def menu():
   print("3. Filter")
   print("9. Exit")
   pilih = eval(input("Masukan Pilihan : "))
+  if (pilih == 1):
+    gung.show()
+  elif (pilih == 2):
+    gung.search()
+  elif (pilih == 3):
+    print("1. Bentuk")
+    print("2. Tinggi")
+    pilih = eval(input("Masukan Pilihan : "))
+    gong = PkgGunungAPI.superGunungApi.subGunungApi(pilih)
+    gong.filter()
+  elif (pilih == 9):
+    print("Keluar Program")
+    exit()
+  else:
+    print("Invalid Input")
+    jeda = input("Tekan \"Enter\" untuk melanjutkan")
